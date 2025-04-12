@@ -9,10 +9,10 @@ local function auto_detect_wrap_mode()
     local detected_mode = "hard"
     if detected_mode == "soft" then
         wrap.enable_soft_wrap()
-        utils.log_warning("Pencil initialized with soft wrap mode (auto-detect).")
+        utils.log_info("Pencil initialized with soft wrap mode (auto-detect).")
     else
         wrap.enable_hard_wrap()
-        utils.log_warning("Pencil initialized with hard wrap mode (auto-detect).")
+        utils.log_info("Pencil initialized with hard wrap mode (auto-detect).")
     end
     utils.log_warning("Auto-detection is currently a placeholder and defaults to hard wrap.")
 end
@@ -23,7 +23,7 @@ end
 
 function M.no_pencil()
     wrap.disable_wrap()
-    utils.log_warning("Pencil disabled. Buffer reverted to global settings.")
+    utils.log_info("Pencil disabled. Buffer reverted to global settings.")
 end
 
 local pencil_enabled = false
@@ -39,13 +39,10 @@ end
 
 function M.soft_pencil()
     wrap.enable_soft_wrap()
-    utils.log_warning("Pencil initialized with soft wrap mode.")
 end
 
 function M.hard_pencil()
     wrap.enable_hard_wrap()
-    autoformat.enable_autoformat()
-    utils.log_warning("Pencil initialized with hard wrap mode.")
 end
 
 function M.setup()
