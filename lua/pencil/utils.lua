@@ -1,4 +1,5 @@
 local config = require("pencil.config")
+local state = require("pencil.state")
 
 local M = {}
 
@@ -29,8 +30,33 @@ function M.log_error(message)
     vim.api.nvim_echo({ { format_log_message("Error", message), "ErrorMsg" } }, true, {})
 end
 
-function M.log_info(message)
-    vim.api.nvim_echo({ { format_log_message("Info", message), "InfoMsg" } }, true, {})
+function M.log_states()
+    local states = {}
+
+    if state.pencil_enabled then
+        table.insert(states, "Pencil: Enabled")
+    else
+        table.insert(states, "Pencil: Disabled")
+    end
+
+    if state.autoformat_enabled then
+        table.insert(states, "AutoFormat: Enabled")
+    else
+        table.insert(states, "Autoformat: Disabled")
+    end
+
+    if vim.opt_local.wrap:get() then
+        if vim.opt_local.linebreak:get() then
+            table.insert(states, "Wrap Mode: Soft")
+        else
+            table.insert(states, "Wrap Mode: Hard")
+        end
+    else
+        table.insert(states, "Wrap Mode: Disabled")
+    end
+
+    local message = table.concat(states, " | ")
+    vim.notify(message, vim.log.levels.INFO)
 end
 
 function M.safe_call(func, ...)

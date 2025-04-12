@@ -1,4 +1,5 @@
 local utils = require("pencil.utils")
+local state = require("pencil.state")
 
 local M = {}
 
@@ -16,7 +17,7 @@ function M.enable_autoformat()
     vim.opt.formatoptions:append("j")
     vim.opt.formatoptions:append("n")
 
-    utils.log_info("Auto format enabled.")
+    state.autoformat_enabled = true
 end
 
 function M.disable_autoformat()
@@ -25,7 +26,7 @@ function M.disable_autoformat()
     vim.opt.formatoptions:remove("j")
     vim.opt.formatoptions:remove("n")
 
-    utils.log_info("Auto format disabled.")
+    state.autoformat_enabled = false
 end
 
 return M

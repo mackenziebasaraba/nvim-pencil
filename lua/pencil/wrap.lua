@@ -24,14 +24,12 @@ function M.enable_soft_wrap()
     vim.opt_local.linebreak = true
     vim.opt_local.showbreak = config.options.show_break_symbol
     set_cursor_wrap(config.options.cursor_wrap)
-    utils.log_info("Soft wrap mode enabled.")
 end
 
 function M.enable_hard_wrap(text_width)
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = false
     vim.opt_local.textwidth = text_width or config.options.text_width
-    utils.log_info("Hard wrap enabled.")
 
     if utils.get_option("autoformat", true) then
         autoformat.enable_autoformat()
