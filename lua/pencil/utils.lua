@@ -29,6 +29,10 @@ function M.log_error(message)
     vim.api.nvim_echo({ { format_log_message("Error", message), "ErrorMsg" } }, true, {})
 end
 
+function M.log_info(message)
+    vim.api.nvim_echo({ { format_log_message("Info", message), "InfoMsg" } }, true, {})
+end
+
 function M.safe_call(func, ...)
     if type(func) == "function" then
         local ok, result = pcall(func, ...)
