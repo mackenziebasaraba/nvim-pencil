@@ -5,9 +5,9 @@ M.options = {
     wrap_mode_default = "hard", -- "soft", "hard", or "off"
     text_width = 74, -- Chosen for compatibility with email clients/Markdown renderers
     autoformat = true,
-    autoformat_config = {
+    autoformat_rules = {
         markdown = {
-            black = {
+            blacklist = {
                 "htmlH[0-9]",
                 "markdownCode",
                 "markdownFencedCodeBlock",
@@ -17,40 +17,40 @@ M.options = {
                 "mkdCode",
                 "mmdTable[A-Za-z0-9]*",
             },
-            white = {
+            whitelist = {
                 "markdownLink",
             },
         },
         asciidoc = {
-            black = {
+            blacklist = {
                 "asciidoc(AttributeList|AttributeEntry|ListLabel|Literal|SideBar|Source|Sect[0-9])",
                 "asciidoc[A-Za-z]*(Block|Macro|Title)",
             },
-            white = {
+            whitelist = {
                 "asciidoc(AttributeRef|Macro)",
             },
             enforce_previous_line = true,
         },
         rst = {
-            black = {
+            blacklist = {
                 "rst(CodeBlock|Directive|ExDirective|LiteralBlock|Sections)",
                 "rst(Comment|Delimiter|ExplicitMarkup|SimpleTable)",
             },
         },
         tex = {
-            black = {
+            blacklist = {
                 "tex(BeginEndName|Delimiter|DocType|InputFile|Math|RefZone|Statement|Title)",
                 "texSection$",
             },
             enforce_previous_line = true,
         },
         textile = {
-            black = {
+            blacklist = {
                 "txtCode",
             },
         },
         pandoc = {
-            black = {
+            blacklist = {
                 "^pandoc.*Code.*",
                 "pandocHTML",
                 "pandocLaTeXMathBlock",
