@@ -30,8 +30,12 @@ local function set_cursor_wrap(enabled)
     end
 end
 
+function M.user_settings()
+    vim.opt_local.conceallevel = config.options.conceal_level
+end
 
 function M.enable_soft_wrap()
+    M.user_settings()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
     vim.opt_local.showbreak = config.options.show_break_symbol
@@ -39,9 +43,9 @@ function M.enable_soft_wrap()
 end
 
 function M.enable_hard_wrap(text_width)
+    M.user_settings()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = false
-
 
     if utils.get_option("autoformat", true) then
         autoformat.enable_autoformat()
@@ -57,6 +61,7 @@ function M.disable_wrap()
     vim.opt_local.wrap = false
     vim.opt_local.linebreak = false
     vim.opt_local.textwidth = 0
+    vim.opt_local.conceallevel = vim.opt.conceallevel:get()
     autoformat.disable_autoformat()
     set_cursor_wrap(false)
 end
