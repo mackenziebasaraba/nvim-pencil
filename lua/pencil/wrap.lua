@@ -10,11 +10,23 @@ local function set_cursor_wrap(enabled)
         vim.keymap.set("n", "<Down>", "gj", { silent = true, noremap = true, desc = "Move down a visual line" })
         vim.keymap.set("i", "<Up>", "<C-o>gk", { silent = true, noremap = true, desc = "Move up a visual line in Insert mode" })
         vim.keymap.set("i", "<Down>", "<C-o>gj", { silent = true, noremap = true, desc = "Move down a visual line in Insert mode" })
+        if config.options.cursor_wrap_enable_jk then
+            vim.keymap.set("n", "K", "gk", { silent = true, noremap = true, desc = "Move up a visual line" })
+            vim.keymap.set("n", "J", "gj", { silent = true, noremap = true, desc = "Move down a visual line" })
+            vim.keymap.set("i", "K", "<C-o>gk", { silent = true, noremap = true, desc = "Move up a visual line in Insert mode" })
+            vim.keymap.set("i", "J", "<C-o>gj", { silent = true, noremap = true, desc = "Move down a visual line in Insert mode" })
+        end
     else
         vim.keymap.del("n", "<Up>")
         vim.keymap.del("n", "<Down>")
         vim.keymap.del("i", "<Up>")
         vim.keymap.del("i", "<Down>")
+        if config.options.cursor_wrap_enable_jk then
+            vim.keymap.del("n", "K")
+            vim.keymap.del("n", "J")
+            vim.keymap.del("i", "K")
+            vim.keymap.del("i", "J")
+        end
     end
 end
 

@@ -62,6 +62,7 @@ M.options = {
     },
     join_spaces = false, -- Use a single space after periods **DOES NOT DO ANYTHING YET**
     cursor_wrap = true, -- Enable cursor movement between soft line breaks with arrow keys
+    cursor_wrap_enable_jk = false, -- Enables cursor movement between soft line breaks with J and K
     conceal_level = 3, -- **DOES NOT DO ANYTHING YET**
     conceal_cursor = "c", -- Conceals cursor in chosen modes (e.g., "c", "n", "v", "i"). **DOES NOT DO ANYTHING YET&**
     show_break_symbol = ">", -- Visual marker for soft-wrapped lines
