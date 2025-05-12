@@ -29,10 +29,11 @@ end
 function M.enable_hard_wrap(text_width)
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = false
-    vim.opt_local.textwidth = text_width or config.options.text_width
+
 
     if utils.get_option("autoformat", true) then
         autoformat.enable_autoformat()
+        autoformat.format_buffer()
     else
         autoformat.disable_autoformat()
     end
